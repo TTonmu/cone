@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 이서윤체 폰트 적용을 위한 코드 */
+        @font-face {
+          font-family: "LeeSeoyun";
+          src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2202-2@1.0/LeeSeoyun.woff")
+            format("woff");
+          font-weight: normal;
+          font-style: normal;
+        }
+        /* body태그 자체에 css 요소 부여 */
+        body {
+            font-family: "LeeSeoyun";
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            background-image: url("./background.png");
+        }
+
+        .container {
+        width: 390px;
+        background-color: #ff9d73;
+        height: 100%;
+        }
+
+        .photos {
+            margin-top: 30px;
+        }
+
+        .photo-frame {
+            background-color: white;
+            margin: 15px 20px;
+            height: 200px;
+            
+            background-size: cover;
+            position: relative;
+        }
+
+
+        .footer {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .f-title {
+            font-size: 25px;
+            font-weight: 900;
+            color: white;
+        }
+
+        .f-date {
+            font-size: 15px;
+            font-weight: 500;
+            color: white;
+        }
+
+        #image1 {
+            background-image: url("./사진1.jpg");
+        }
+
+        #image2 {
+            background-image: url("./사진2.jpg");
+        }
+
+        #image3 {
+            background-image: url("./사진3.jpg");
+        }
+
+        #image4 {
+            background-image: url("./사진4.jpg");
+        }
+
+        .photo-description {
+            /* 배경은 검게, 글자는 흰 색으로 */
+            color: white;
+            background-color: black;
+
+            /* 가로 너비는 내부 콘텐츠에 딱 맞게! */
+            width: fit-content;
+            padding: 0 20px;
+            margin-bottom: 10px;
+
+            /* 경계선 */
+            border-radius: 10px;
+
+            position: absolute;
+            bottom: 0;
+            transform: translate(-50%);
+            left: 50%;
+        }
+
+        /* opacity : 투명도를 의미해요! 0% 투명하다. 즉 다 보인다. */
+        .showText {
+            opacity: 0;
+        }
+
+        /* opacity : 투명도를 의미해요! 100% 투명하다. 즉 안보인다. */
+        /* transition : 나타날 때 0.5초동안 천천히 나타나는 효과를 주라는 의미에요 */
+        .hideText {
+            opacity: 1;
+        transition: opacity 0.5s linear;
+        }
+
+        
+
+
+
+    </style>
+    <script>
+        function showText(number) {
+        if (number === 1) {
+            document.querySelector("#desc1").classList.remove("hideText");
+            document.querySelector("#desc1").classList.add("showText");
+        } else if (number === 2) {
+            document.querySelector("#desc2").classList.remove("hideText");
+            document.querySelector("#desc2").classList.add("showText");
+        } else {
+            document.querySelector("#desc3").classList.remove("hideText");
+            document.querySelector("#desc3").classList.add("showText");
+        }
+        }
+
+        function hideText(number) {
+        if (number === 1) {
+            document.querySelector("#desc1").classList.remove("showText");
+            document.querySelector("#desc1").classList.add("hideText");
+        } else if (number === 2) {
+            document.querySelector("#desc2").classList.remove("showText");
+            document.querySelector("#desc2").classList.add("hideText");
+        } else {
+            document.querySelector("#desc3").classList.remove("showText");
+            document.querySelector("#desc3").classList.add("hideText");
+        }
+        }
+
+        // 클릭 기능
+        // 1. 선택된 사진의 숫자를 가진 텍스트를 alert 형태로 출력해줌
+        function alertText(number) {
+            alert(`${number}번째 추억이에요! 눌러주셔서 감사합니다 :)`);
+        }
+
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="photos"></div>
+            <div id="image1" class="photo-frame">
+                 <span id="desc1" class="photo-description">
+                     더 유니온 공연
+                 </span>
+            </div>
+            <div id="image2" class="photo-frame">
+                 <span id="desc2" class="photo-description">
+                     공연 전 빵 먹방
+                 </span>
+            </div>
+             <div id="image3" class="photo-frame">
+                 <span id="desc3" class="photo-description">
+                      비츠플로우 공연
+                 </span>
+            </div>
+            <div id="image4" class="photo-frame">
+                <iframe
+                    src="https://www.youtube.com/embed/ghkQ0XCynIQ"
+                    frameborder="0"
+                    class="video"
+                ></iframe>
+            </div>
+        </div>
+        <div class="footer">
+        <p class="f-title">Good Night</p>
+        <p class="f-date">2023.02.05</p>
+      </div>
+    </div>
+    
+</body>
+</html>
